@@ -18,10 +18,6 @@ services:
     container_name: mysql
     env_file:
       - ./env/mysql.env # environment variables for MySQL
-    ports:
-      - "3306:3306" # 3306 is the port on your host machine, 3306 is the port inside the container
-    volumes:
-      - ./mysql:/var/lib/mysql # persist data in ./mysql directory
   composer: # We created a Dockerfile for Composer because we need an ENTRYPOINT to run composer commands
     build:
       context: ./dockerfiles
