@@ -22,6 +22,11 @@ services:
       - "3306:3306" # 3306 is the port on your host machine, 3306 is the port inside the container
     volumes:
       - ./mysql:/var/lib/mysql # persist data in ./mysql directory
-  # composer:
+  composer: # We created a Dockerfile for Composer because we need an ENTRYPOINT to run composer commands
+    build:
+      context: ./dockerfiles
+      dockerfile: composer.dockerfile
+    volumes:
+      - ./src:/var/www/html
   # npm:
   # artisan:
